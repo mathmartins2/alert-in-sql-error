@@ -8,14 +8,14 @@ const minutes = 30;
 const milliseconds = minutes * 60 * 1000;
 
 async function runQuery() {
+  const pool = new Pool({
+    user: process.env.PG_USER,
+    host: process.env.PG_HOST,
+    database: process.env.PG_DATABASE,
+    password: process.env.PG_PASSWORD,
+    port: 5432,
+  });
   try {
-    const pool = new Pool({
-      user: process.env.PG_USER,
-      host: process.env.PG_HOST,
-      database: process.env.PG_DATABASE,
-      password: process.env.PG_PASSWORD,
-      port: 5432,
-    });
     await pool.query('SELECT now()');
   } catch (err) {
     await sendDiscordMessage('banco de dados is down AGR FERROU TD @everyone')
