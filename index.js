@@ -17,10 +17,10 @@ const pool = new Pool({
 
 async function runQuery() {
   try {
-    await pool.query('SELECT now()');
+    await pool.query('SELECT no)');
   } catch (err) {
     await sendDiscordMessage('banco de dados is down AGR FERROU TD @everyone')
-    fs.appendFileSync('error.log', err);
+    await fs.appendFileSync('error.log', JSON.stringify(err));
   } finally {
     await pool.end();
   }
